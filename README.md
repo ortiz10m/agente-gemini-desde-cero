@@ -21,7 +21,7 @@ El objetivo es entender los tres pilares de cualquier agente moderno:
 ## 🗺️ Roadmap
 
 - [x] **Fase 1** — Primera llamada a la API de Gemini
-- [ ] **Fase 2** — Prompt de sistema + personalidad
+- [x] **Fase 2** — Prompt de sistema + personalidad
 - [ ] **Fase 3** — Tool use (agente que lee archivos)
 - [ ] **Fase 4** — Loop de agente completo
 - [ ] **Fase 5** — Deploy / interfaz
@@ -64,6 +64,7 @@ GEMINI_API_KEY=tu_clave_aqui
 
 ```bash
 python fase1.py
+python fase2.py
 ```
 
 ## 📁 Estructura del proyecto
@@ -71,6 +72,7 @@ python fase1.py
 ```
 agente-gemini-desde-cero/
 ├── fase1.py              # Primera llamada a Gemini
+├── fase2.py              # Agente Nova con prompt de sistema
 ├── ver_modelos.py        # Lista los modelos disponibles en tu cuenta
 ├── requirements.txt      # Dependencias del proyecto
 ├── LICENSE               # Licencia MIT
@@ -89,6 +91,7 @@ agente-gemini-desde-cero/
 
 - Cómo funciona una llamada a un LLM por debajo (auth → cliente → prompt → respuesta)
 - Por qué los nombres de modelos caducan y cómo consultar los disponibles con `client.models.list()`
+- Cómo un prompt de sistema define la personalidad completa de un agente
 - Buenas prácticas: nunca hardcodear API keys, usar `.gitignore`, separar dependencias en `requirements.txt`
 
 ## 🤝 Contribuciones
