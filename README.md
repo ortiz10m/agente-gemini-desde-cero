@@ -23,7 +23,7 @@ El objetivo es entender los tres pilares de cualquier agente moderno:
 - [x] **Fase 1** — Primera llamada a la API de Gemini
 - [x] **Fase 2** — Prompt de sistema + personalidad
 - [x] **Fase 3** — Tool use (agente que lee archivos)
-- [ ] **Fase 4** — Loop de agente completo
+- [x] **Fase 4** — Loop de agente completo
 - [ ] **Fase 5** — Deploy / interfaz
 
 ## 🚀 Instalación
@@ -66,15 +66,29 @@ GEMINI_API_KEY=tu_clave_aqui
 python fase1.py
 python fase2.py
 python fase3.py
+python fase4.py
 ```
+
+El agente final (`fase4.py`) incluye:
+
+- **Reintentos automáticos** si el modelo falla por saturación (error 503).
+- **Comandos especiales**: `/ayuda`, `/limpiar`.
+- **Dos herramientas**: `leer_archivo` y `listar_archivos`.
+- **Arquitectura modular** (config, herramientas y lógica separadas).
 
 ## 📁 Estructura del proyecto
 
 ```
 agente-gemini-desde-cero/
+├── agente/
+│   ├── __init__.py       # Marca la carpeta como módulo Python
+│   ├── config.py         # Configuración del agente (modelo, personalidad)
+│   ├── herramientas.py   # Herramientas que el agente puede usar
+│   └── agente.py         # Lógica del agente
 ├── fase1.py              # Primera llamada a Gemini
 ├── fase2.py              # Agente Nova con prompt de sistema
-├── fase3.py              # Agente Nova con tool use (leer_archivo)
+├── fase3.py              # Agente Nova con tool use
+├── fase4.py              # Punto de entrada del agente modular
 ├── ver_modelos.py        # Lista los modelos disponibles en tu cuenta
 ├── requirements.txt      # Dependencias del proyecto
 ├── LICENSE               # Licencia MIT
@@ -95,6 +109,9 @@ agente-gemini-desde-cero/
 - Por qué los nombres de modelos caducan y cómo consultar los disponibles con `client.models.list()`
 - Cómo un prompt de sistema define la personalidad completa de un agente
 - Cómo darle herramientas a un agente para que ejecute acciones reales (tool use)
+- Cómo separar un proyecto en módulos (config, herramientas, lógica)
+- Cómo implementar reintentos automáticos ante errores de red
+- Cómo añadir comandos especiales (`/ayuda`, `/limpiar`) al agente
 - Buenas prácticas: nunca hardcodear API keys, usar `.gitignore`, separar dependencias en `requirements.txt`
 
 ## 🤝 Contribuciones
